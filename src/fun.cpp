@@ -3,8 +3,8 @@ unsigned int faStr1(const char *str){
     unsigned int counter=0;
     bool is_word=false;
     bool is_numeric=false;
-    while(str[index-1]!='\0') {
-        if(str[index]==' ' || str[index]=='\0'){ // Any symbol except space and EOL
+    while(str[index]!='\0') {
+        if(str[index]==' '){ // Any symbol except space
             if(is_word && !is_numeric){
                 ++counter;
             }
@@ -18,6 +18,9 @@ unsigned int faStr1(const char *str){
         }
         ++index;
     }
+    if(is_word && !is_numeric){
+        ++counter;
+    }
     return counter;
 }
 
@@ -26,8 +29,8 @@ unsigned int faStr2(const char *str){
     unsigned int counter=0;
     bool is_word=false;
     bool has_upper=false;
-    while(str[index-1]!='\0') {
-        if(str[index]==' ' || str[index]=='\0'){ // Any symbol except space and EOL
+    while(str[index]!='\0') {
+        if(str[index]==' '){ // Any symbol except space
             if(is_word && !has_upper){
                 ++counter;
             }
@@ -48,6 +51,9 @@ unsigned int faStr2(const char *str){
         }
         ++index;
     }
+    if(is_word && !has_upper){
+        ++counter;
+    }
     return counter;
 }
 
@@ -56,8 +62,8 @@ unsigned int faStr3(const char *str){
     unsigned int counter=0;
     unsigned int symbol_counter=0;
     bool is_word=false;
-    while(str[index-1]!='\0') {
-        if(str[index]==' ' || str[index]=='\0'){ // Any symbol except space and EOL
+    while(str[index]!='\0') {
+        if(str[index]==' '){ // Any symbol except space
             if(is_word){
                 ++counter;
             }
@@ -67,6 +73,9 @@ unsigned int faStr3(const char *str){
             ++symbol_counter;
         }
         ++index;
+    }
+    if(is_word){
+        ++counter;
     }
     if(counter==0){
         return 0;
